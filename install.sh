@@ -841,7 +841,7 @@ echo "| PRE-INSTALLATION |"
 echo "+------------------+"
 echo ""
 
-# Enable parallel downloads and multilib repo
+# Enable parallel downloads
 
 sed -i 's/#ParallelDownloads = 5/ParallelDownloads = 20/' /etc/pacman.conf # Uncomment Parallel Downloads and change value from 5 to 20
 echo "Parallel downloads have been enabled and increased to 20."
@@ -937,6 +937,126 @@ case "$kernelName" in
    
 esac
 echo "The base packages have been installed."
+echo ""
+
+echo "+---------------------------------+"
+echo "| ARCH LINUX WIKI RECOMMENDATIONS |"
+echo "+---------------------------------+"
+echo ""
+echo "The following packages are recommended"
+echo "by the Arch Linux installation guide..."
+echo ""
+
+# Text Editor
+
+echo "Would you like to install nano or vim?"
+echo ""
+echo "Package : nano"
+echo "Description : Pico editor clone with enhancements"
+echo "Repository : Core"
+echo ""
+echo "Package : vim"
+echo "Description : Vi Improved, a highly configurable, improved version of the vi text editor"
+echo "Repository : Extra"
+echo ""
+echo "1) None (Default)"
+echo "2) Nano"
+echo "3) Vim"
+echo "4) Both"
+echo ""
+read texteditor
+echo ""
+
+case "$texteditor" in
+    
+    1) # None
+    
+    echo "No text editor will be installed."
+    
+    ;;
+    
+    2) # Nano
+    
+    echo "OK. Nano will now be installed."
+    echo ""
+    pacstrap /mnt nano
+    echo ""
+    echo "Done. Nano has been installed."
+    
+    ;;
+    
+    3) # Vim
+    
+    echo "OK. Vim will now be installed."
+    echo ""
+    pacstrap /mnt vim
+    echo ""
+    echo "Done. Vim has been installed."
+    
+    ;;
+    
+    4) # Both
+    
+    echo "OK. Nano and Vim will now be installed."
+    echo ""
+    pacstrap /mnt nano vim
+    echo ""
+    echo "Done. Nano and Vim have been installed."
+    
+    ;;
+    
+    *) Default option
+    
+    echo "No text editor will be installed."
+    
+    ;;
+    
+esac
+echo ""
+
+# Man-page and man-db
+
+echo "Would you like to install man-pages and man-db?"
+echo ""
+echo "Package : man-pages"
+echo "Description : Linux man pages"
+echo "Repository : Core"
+echo ""
+echo "Package : man-db"
+echo "Description : A utility for reading man pages"
+echo "Repository : Core"
+echo ""
+echo "1) No (Default)"
+echo "2) Yes"
+echo ""
+read man
+echo ""
+
+case "$man" in
+    
+    1) # No
+    
+    echo "OK. The man-pages and man-db packages will not be installed."
+    
+    ;;
+    
+    2) # Yes
+    
+    echo "OK. The man-pages and man-db packages will now be installed."
+    echo ""
+    pacstrap /mnt man-pages man-db
+    echo ""
+    echo "Done. The man-pages and man-db packages have been installed."
+    
+    ;;
+    
+    *) Default option
+    
+    echo "OK. The man-pages and man-db packages will not be installed."
+    
+    ;;
+    
+esac
 echo ""
 
 # Download setup script and place it in the new root partition
