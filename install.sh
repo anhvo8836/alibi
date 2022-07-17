@@ -941,7 +941,10 @@ echo ""
 
 # Download setup script and place it in the new root partition
 
+echo "One moment while we download the setup script..."
+echo ""
 curl https://raw.githubusercontent.com/anhvo8836/alibi/main/setup.sh > /mnt/setup.sh
+echo ""
 
 # Generate FSTab file
 
