@@ -42,7 +42,7 @@ echo ""
 
 # Choose which device to use
 
-fdisk -f
+fdisk -l
 echo ""
 echo "Which device will you be installing Arch Linux to?"
 echo "WARNING : The selected drive will be wiped."
