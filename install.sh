@@ -939,19 +939,25 @@ esac
 echo "The base packages have been installed."
 echo ""
 
-# Chroot into the new installation and run the chroot script
+# Download setup script and place it in the new root partition
 
-cp -r ~/alibi /mnt  # Copy archlinux repo to new root partition 
-genfstab -U /mnt > /mnt/etc/fstab   # Generate fstab file
+curl https://raw.githubusercontent.com/anhvo8836/alibi/main/setup.sh > /mnt/setup.sh
+
+# Generate FSTab file
+
+genfstab -U /mnt > /mnt/etc/fstab
 echo "Fstab file has been created."
 echo ""
+
+# Change root into the new installation and run the setup script
+
 echo "We will now configure the new installation."
 sleep 2;clear
-arch-chroot /mnt sh /alibi/setup.sh
+arch-chroot /mnt sh /setup.sh
 
-# Remove alibi repo folder
+# Remove setup script
 
-rm -rf /mnt/alibi
+rm /mnt/setup.sh
 
 # Unmount all drives (surpressing all error messages)
 
@@ -976,3 +982,23 @@ echo "+--------------------------------------------------+"
 echo ""
 read -p "Press enter to reboot your system"
 reboot
+
+# OLD CHROOT 
+#
+# Chroot into the new installation and run the chroot script
+#
+#cp -r ~/alibi /mnt  # Copy archlinux repo to new root partition 
+#genfstab -U /mnt > /mnt/etc/fstab   # Generate fstab file
+#echo "Fstab file has been created."
+#echo ""
+#echo "We will now configure the new installation."
+#sleep 2;clear
+#arch-chroot /mnt sh /alibi/setup.sh
+#
+# Remove alibi repo folder
+#
+#rm -rf /mnt/alibi
+#
+# Unmount all drives (surpressing all error messages)
+#
+#umount /mnt;clear
