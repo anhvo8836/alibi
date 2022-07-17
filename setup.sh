@@ -1111,6 +1111,223 @@ echo ""
 echo "Done. GRUB has been installed as the bootlader."
 echo ""
 
+echo "+----------------------+"
+echo "| STARTER APPLICATIONS |"
+echo "+----------------------+"
+echo ""
+
+# Ask if the user wants to install a list of starter applications
+
+echo "Do you want to install these start applications?"
+echo ""
+echo "Package : htop"
+echo "Description : Interactive process viewer"
+echo "Repository : Extra"
+echo ""
+echo "Package : git"
+echo "Description : the fast distributed version control system"
+echo "Repository : Extra"
+echo ""
+echo "Package : neofetch"
+echo "Description : A CLI system information tool written in BASH that supports displaying images."
+echo "Repository : Community"
+echo ""
+echo "Package : firefox"
+echo "Description : Standalone web browser from mozilla.org"
+echo "Repository : Extra"
+echo ""
+echo "1) No - Do not install any starter applications (Default)"
+echo "2) Yes - Install ALL starter applications"
+echo "3) Let me choose what to install"
+echo ""
+read starter_apps
+echo ""
+
+case "$starter_apps" in
+
+    1) # No - Do not install any starter applications
+    
+    echo "OK, the starter applications will not be installed."
+    
+    ;;
+    
+    2) # Yes - Install ALL starter applications
+    
+    echo "OK, the starter applications will now be installed."
+    echo ""
+    pacman -S htop git neofetch firefox --needed --noconfirm
+    echo ""
+    echo "Done. The starter applications have been installed."
+    
+    ;;
+    
+    3) # Let me choose what to install
+    
+        echo "Would you like to install htop?"
+        echo ""
+        echo "Package : htop"
+        echo "Description : Interactive process viewer"
+        echo "Repository : Extra"
+        echo ""
+        echo "1) No (Default)"
+        echo "2) Yes"
+        echo ""
+        read htop
+        echo ""
+
+        case "$htop" in
+        
+            1) # No
+            
+            echo "OK, htop will not be installed."
+            
+            ;;
+        
+            2) # Yes
+            
+            echo "OK, htop will now be installed..."
+            echo ""
+            pacman -S htop --needed --noconfirm
+            echo ""
+            echo "Done. Htop has been installed."
+            
+            ;;
+            
+            *) # Default option
+            
+            echo "OK, htop will not be installed."
+            
+            ;;
+            
+        esac
+        echo ""
+        
+        echo "Would you like to install git?"
+        echo ""
+        echo "Package : git"
+        echo "Description : the fast distributed version control system"
+        echo "Repository : Extra"
+        echo ""
+        echo "1) No (Default)"
+        echo "2) Yes"
+        echo ""
+        read git
+        echo ""
+
+        case "$git" in
+        
+            1) # No
+            
+            echo "Git will not be installed."
+            
+            ;;
+            
+            2) # Yes
+            
+            echo "OK, git will now be installed..."
+            echo ""
+            pacman -S git --needed --noconfirm
+            echo ""
+            echo "Done. Git has been installed."
+            
+            ;;
+            
+            *) # Default option
+            
+            echo "Git will not be installed."
+            
+            ;;
+            
+        esac        
+    
+        echo "Would you like to install neofetch?"
+        echo ""
+        echo "Package : neofetch"
+        echo "Description : A CLI system information tool written in BASH that supports displaying images."
+        echo "Repository : Community"
+        echo ""
+        echo "1) No (Default)"
+        echo "2) Yes"
+        echo ""
+        read neofetch
+        echo ""
+
+        case "$neofetch" in
+        
+            1) # No
+            
+            echo "Neofetch will not be installed."
+            
+            ;;
+        
+            2) #Yes
+        
+            echo "OK, neofetch will now be installed..."
+            echo ""
+            pacman -S neofetch --needed --noconfirm
+            echo ""
+            echo "Done. Neofetch has been installed."
+            
+            ;;
+            
+            *) # Default option
+            
+            echo "Neofetch will not be installed."
+            
+            ;;
+            
+        esac
+        echo ""    
+    
+        echo "Would you like to install firefox?"
+        echo ""
+        echo "Package : firefox"
+        echo "Description : Standalone web browser from mozilla.org"
+        echo "Repository : Extra"
+        echo ""
+        echo "1) No (Default)"
+        echo "2) Yes"
+        echo ""
+        read firefox
+        echo ""
+
+        case "$firefox" in
+        
+            1) # No
+            
+            echo "OK, Firefox will not be installed."
+            
+            ;;
+        
+            2) # Yes
+            
+            echo "OK, Firefox will now be installed..."
+            echo ""
+            pacman -S firefox --needed --noconfirm
+            echo ""
+            echo "Done. Firefox has been installed."
+            
+            ;;
+            
+            *)
+            
+            echo "OK, Firefox will not be installed."
+            
+            ;;
+            
+        esac
+    
+    ;;
+    
+    *) #Default option
+
+    echo "OK, the starter applications will not be installed."
+
+    ;;
+    
+esac
+echo ""
+
 echo "+----------+"
 echo "| FINISHED |"
 echo "+----------+"
