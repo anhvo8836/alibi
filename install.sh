@@ -985,23 +985,3 @@ echo "+--------------------------------------------------+"
 echo ""
 read -p "Press enter to reboot your system"
 reboot
-
-# OLD CHROOT 
-#
-# Chroot into the new installation and run the chroot script
-#
-#cp -r ~/alibi /mnt  # Copy archlinux repo to new root partition 
-#genfstab -U /mnt > /mnt/etc/fstab   # Generate fstab file
-#echo "Fstab file has been created."
-#echo ""
-#echo "We will now configure the new installation."
-#sleep 2;clear
-#arch-chroot /mnt sh /alibi/setup.sh
-#
-# Remove alibi repo folder
-#
-#rm -rf /mnt/alibi
-#
-# Unmount all drives (surpressing all error messages)
-#
-#umount /mnt;clear
