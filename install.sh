@@ -48,7 +48,6 @@ echo "Which device will you be installing Arch Linux to?"
 echo "WARNING : The selected drive will be wiped."
 echo ""
 read device
-export device   # Set device as enviroment variable for disk format scripts
 echo ""
 echo "OK. $device will be used."
 echo ""
